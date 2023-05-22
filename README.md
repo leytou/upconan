@@ -1,0 +1,2 @@
+# upconan
+从剪贴板复制conan包信息，更新当前路径下的conanfile.py或conanfile.txt文件中对应的conan包
