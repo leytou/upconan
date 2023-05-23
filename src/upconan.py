@@ -69,11 +69,8 @@ def ParsePackageInfoText(text):
 
 def FindTargetPackageInfo(curent_package_info , target_package_infos):
     for target_package_info in  target_package_infos:
-        if curent_package_info['name'] == target_package_info['name'] and curent_package_info['version'] != target_package_info['version']:
-            if curent_package_info['owner'] == target_package_info['owner']:
-                return target_package_info
-            else:
-                print("waring: not same owner!")
+        if curent_package_info['name'] == target_package_info['name'] and curent_package_info['owner'] == target_package_info['owner']:
+            return target_package_info
     return None
 
 
@@ -89,14 +86,11 @@ def UpdatePackageInfoLines(lines, target_package_infos):
     for idx, line in enumerate(lines):
         curent_package_info = ParsePackageInfoLine(line)
         if curent_package_info:
-            target_package_info =FindTargetPackageInfo(curent_package_info, target_package_infos)
-            if target_package_info:
+            target_package_info = FindTargetPackageInfo(curent_package_info, target_package_infos)
+            if target_package_info and curent_package_info != target_package_info:
                 lines[idx] = UpdatePackageInfoLine(line,curent_package_info, target_package_info)
                 is_changed=True
-       
-
     return lines
-
 
 test_target_text='''asio/1.25.0
 hello/2.3.4@world/stable
@@ -181,5 +175,5 @@ def main():
 
 if __name__ == "__main__":
     EnvCheck()
-    Main()
+    main()
 
