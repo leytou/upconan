@@ -69,7 +69,7 @@ def ParsePackageInfoText(text):
 
 def FindTargetPackageInfo(curent_package_info , target_package_infos):
     for target_package_info in  target_package_infos:
-        if curent_package_info['name'] == target_package_info['name'] and curent_package_info['owner'] == target_package_info['owner']:
+        if curent_package_info['name'] == target_package_info['name']:
             return target_package_info
     return None
 
@@ -78,6 +78,8 @@ def UpdatePackageInfoLine(line,curent_package_info, target_package_info ):
     updated_line =  line.replace(curent_package_info['version'], target_package_info['version'])
     if curent_package_info['channel']:
         updated_line =  updated_line.replace(curent_package_info['channel'], target_package_info['channel'])
+    if curent_package_info['owner']:
+        updated_line =  updated_line.replace(curent_package_info['owner'], target_package_info['owner'])
     return updated_line
 
 is_changed = False
