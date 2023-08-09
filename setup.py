@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='upconan',
-    version="1.0.8",
+    version="1.0.9",
     description="一个更新conanfile的便捷工具",
     long_description="""从剪贴板复制conan包信息，更新当前路径下的conanfile.py或conanfile.txt文件中对应的conan包版本""",
     long_description_content_type='text/x-rst',

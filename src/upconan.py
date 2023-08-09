@@ -154,13 +154,13 @@ def main():
 
     print(f'输入字符串:\n{target_text}')
 
-    with open(conanfile, "r") as inf:
+    with open(conanfile, "r", encoding='utf-8') as inf:
         input_lines = inf.readlines()
         updated_lines = UpdatePackageInfoLines(input_lines,  target_package_infos)
 
         if is_changed:
             #写回原文件，替换文本
-            with open(conanfile, 'w', newline=GetNewlineType(conanfile)) as outf:
+            with open(conanfile, 'w', encoding='utf-8', newline=GetNewlineType(conanfile)) as outf:
                 outf.writelines(updated_lines)
 
             # 检测是否是git项目，若是则打印修改项
